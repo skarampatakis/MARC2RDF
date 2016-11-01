@@ -374,7 +374,7 @@ string ClassSelector(record myRecord){
 }
 
 string ClassFinder(string value, string clas[][2],int max_clas){
-//this function finds the Class of the object that the record describes,the velue is the string of the field 200 $b,clas is the array with the classes
+//this function finds the Class of the object that the record describes,the value is the string of the field 200 $b,class is the array with the classes
 //and max_clas is the number of the classes
 	int i;
 	string found;
@@ -1765,7 +1765,8 @@ int main(int argc,char* argv[]){
 	ofstream line1;
 	//bib.open("data/NLGauth0313new.iso2709");
 	bib.open("data/records.iso2709");
-	cout<<"Loading records, please standby..."<<endl;
+	
+        cout<<"Loading records, please standby..."<<endl;
 	//setlocale(LC_ALL, "");
 	
 	if (bib.is_open()==0){
@@ -1782,16 +1783,20 @@ int main(int argc,char* argv[]){
 	//for (z=0;z<1000;z++){
 	while (!bib.eof( )) {
 		string line;
+                
 		getline(bib,line,'\035');
-		if (line.length()==0){
+		//cout<<line;
+                if (line.length()==0){
 			break;
 		}
-		record myRecord = RecordExtractor(line, record1,clas,max_clas);
+	
+                record myRecord = RecordExtractor(line, record1,clas,max_clas);
 
 		int temp = FieldFind(myRecord,"001");
 		string tempsub;
 		string mySubject;
-		if (temp!=-1){
+                
+                if (temp!=-1){
 			tempsub = myRecord.field[temp].subfield.nosub;
 			mySubject = Connector("library:record",StringClean(tempsub));
 		}
@@ -1802,17 +1807,19 @@ int main(int argc,char* argv[]){
 		}
 		//cout << mySubject<<"||"<<myRecord.field[temp].subfield.nosub<<endl;
 		//RecordPrint(myRecord);
-
-		string myRDF = RDFtransformer(myRecord,mySubject, map, max_fields);
-		if (myRDF[0]!='['){
+                cout<<mySubject;
+		//string myRDF = RDFtransformer(myRecord,mySubject, map, max_fields);
+		/*
+                 
+                if (myRDF[0]!='['){
 			rdf << myRDF;
 		}
 		else {
 			log1<<myRDF;
 		}
-
+                 **/
 		line1<<line<<'\n';
-		cout<<"||"<<record1<<"||"<<"OK"<<"||"<<myRecord.type<<'\n';
+		cout<<"||"<<record1<<"||"<<mySubject<<"||"<<"OK"<<"||"<<myRecord.type<<'\n';
 		record1++;
 		string mpourdes;
 		//cin>>mpourdes;

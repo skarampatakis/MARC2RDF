@@ -6,12 +6,15 @@ Video	bibo:Film
 [Ηχογράφηση]	bibo:AudioDocument
 [Video]	bibo:Film
 [Περιοδικό]	bibo:Magazine
+περιοδικό	bibo:Magazine
+περιοδικο	bibo:Magazine
 [Έντυπα 16ος-1912]	bibo:Document
 Videο	bibo:Film
 [Γραφικά]	bibo:Image
 [Εντυπα 16ος-1912]	bibo:Document
 DVD	bibo:Film
 [Εφημερίδα]	bibo:Newspaper
+εφημερίδα	bibo:Newspaper
 [DVD-BD]	bibo:Film
 [cd-rom]	bibo:AudioVisualDocument
 [games]	bibo:AudioVisualDocument
@@ -36,3 +39,4 @@ B.Traven	bibo:Document
 [Braille]	bibo:Document
 cd	bibo:AudioDocument
 [Επιτραπέζιο παιχνίδι]	owl:Thing
+ημερολόγιο	owl:Thing
